@@ -7,21 +7,30 @@ function getPersons() {
     .then(handleHttpErrors)
 }
 
+function getPerson(id) {
+  const options = makeOptions("GET");
+  return fetch(url+id, options)
+  .then(handleHttpErrors)
+}
+
+function editPerson(id, newUser) {
+  const options = makeOptions("PUT", newUser);
+  return fetch(URL+id, options)
+  .then(handleHttpErrors)
+}
+
 function addPerson(newUser) {
     const options = makeOptions("POST", newUser);
     return fetch(URL, options)
     .then(handleHttpErrors)
 }
 
-
-
-
 const personFacade = {
     getPersons,
+    getPerson,
+    editPerson,
     addPerson
 }
-
-
 
 function makeOptions(method, body) {
     var opts =  {
