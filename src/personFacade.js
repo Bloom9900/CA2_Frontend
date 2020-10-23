@@ -1,5 +1,5 @@
 
-const URL = "https://bloom-dat.dk/CA2_3SEM/api/person/";
+const URL = "https://bloom-dat.dk/tomcat/CA2_3SEM/api/person/";
 
 function getPersons() {
     const options = makeOptions("GET");
