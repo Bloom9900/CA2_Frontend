@@ -25,11 +25,32 @@ function addPerson(newUser) {
     .then(handleHttpErrors)
 }
 
+function getPersonsByHobby(hobby) {
+  const options = makeOptions("GET");
+  return fetch(URL+"hobby/"+hobby, options)
+  .then(handleHttpErrors)
+}
+
+function getPersonsInCity(city) {
+  const options = makeOptions("GET");
+  return fetch(URL+"city/"+city, options)
+  .then(handleHttpErrors)
+}
+
+function getCities() {
+  const options = makeOptions("GET");
+  return fetch(URL+"all/zipcodes", options)
+  .then(handleHttpErrors)
+}
+
 const personFacade = {
     getPersons,
     getPerson,
     editPerson,
-    addPerson
+    addPerson,
+    getPersonsByHobby,
+    getPersonsInCity,
+    getCities
 }
 
 function makeOptions(method, body) {

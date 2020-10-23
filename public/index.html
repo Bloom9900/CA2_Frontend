@@ -31,6 +31,10 @@
     <button type="button" id="addPerson" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
       Add New Person
     </button>
+    <button type="button" id="editPerson" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
+      Edit Person
+    </button>
+    <input type="number" id="editID" placeholder="Edit person with ID">
     <!--
     <div id="error" class="alert alert-danger" role="alert" style="width: 50%;margin-top:10px;"></div>
     -->
@@ -95,15 +99,112 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-            <button type="button" id="savebtn" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+            <button type="button" id="savebtn" class="btn btn-primary" data-dismiss="modal">Add Person</button>
           </div>
         </div>
       </div>
     </div>
 
-  <!-- #################################################################-->
-  <!-- IMPORTANT  DO NOT IMPORT ANY JavaScript in this file by YOURSELF -->
-  <!-- #################################################################-->
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div id="header" class="modal-header">
+
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="id">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" class="form-control" id="fnameEdit">
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" class="form-control" id="lnameEdit">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Numbers</label>
+              <input type="text" class="form-control" id="phoneNumbersEdit">
+            </div>
+            <div class="form-group">
+              <label for="phoneDesc">Phone Description(Work, private)</label>
+              <input type="text" class="form-control" id="phoneDescEdit">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" id="emailEdit">
+            </div>
+            <div class="form-group">
+              <label for="street">Street</label>
+              <input type="text" class="form-control" id="streetEdit">
+            </div>
+            <div class="form-group">
+              <label for="zipCode">Zip Code</label>
+              <input type="text" class="form-control" id="zipCodeEdit">
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" class="form-control" id="cityEdit">
+            </div>
+            <div class="form-group">
+              <label for="additional">Additional Info</label>
+              <input type="text" class="form-control" id="additionalEdit">
+            </div>
+            <div class="form-group">
+              <label for="hNames">Hobby Name</label>
+              <input type="text" class="form-control" id="hobbyEdit">
+            </div>
+            <div class="form-group">
+              <label for="hobbyDesc">Hobby Description</label>
+              <input type="text" class="form-control" id="hobbyDescEdit">
+            </div>
+
+            <!-- Allow form submission with keyboard without duplicating the dialog button -->
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" id="savebtnEdit" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<br><br>
+<div class="row align-items-start" style="border: 1px black">
+  <div class="jumbotron col-4" style="border: 2px solid black">
+
+    <h5>Input hobby, and see which persons attend</h5>
+    <input type="text" id="hobbyInput">
+    <button type="button" id="searchHobby" class="btn btn-primary">Search</button>
+    <p id="hobbyAmount">Amount: </p>
+  </div>
+
+  <div class="jumbotron col-4" style="border: 2px solid black">
+    <h5>Input City Name, to see residents</h5>
+    <input type="text" id="cityInput">
+    <button type="button" id="searchCity" class="btn btn-primary">Search</button>
+  </div>
+
+
+  <div class="col-4" style="float:right">
+    <table class="table">
+      <tr>
+        <th>City</th>
+        <th>Zip Code</th>
+        <th><button type="button" id="getZips" class="btn btn-primary">Load</button></th>
+      </tr>
+      <tbody id="zipTableBody">
+
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- 
+Get a list of all zip codes in Denmark
+Edit a Person to change hobbies and phone number etc.
+
+-->
 
 </body>
 

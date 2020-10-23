@@ -76,4 +76,79 @@ savebtn.addEventListener('click', (event) => {
   personFacade.addPerson(newUser);
 })
 
+var searchHobby = document.getElementById("searchHobby");
+searchHobby.addEventListener('click', (event) => {
+  event.preventDefault;
+  var hobbyName = document.getElementById("hobbyInput").value;
+  personFacade.getPersonsByHobby(hobbyName)
+  .then(data => {
+    const personer = data.all;
+    const tableRows = personer.map(getTableRows);
+    const tableRowsStr = tableRows.join('');
+    tbody.innerHTML = tableRowsStr;
+    hobbyAmount.innerHTML += personer.length;
+  })
+})
 
+var searchCity = document.getElementById("searchCity");
+searchCity.addEventListener('click', (event) => {
+  event.preventDefault;
+  var cityName = document.getElementById("cityInput").value;
+  personFacade.getPersonsInCity(cityName)
+  .then(data => {
+    const personer = data.all;
+    const tableRows = personer.map(getTableRows);
+    const tableRowsStr = tableRows.join('');
+    tbody.innerHTML = tableRowsStr;
+  })
+})
+
+var zipTableBody = document.getElementById("zipTableBody");
+
+var getZips = document.getElementById("getZips");
+getZips.addEventListener('click', (event) => {
+  event.preventDefault;
+  personFacade.getCities()
+  .then(data => {
+    const cities = data.all;
+    const tableRows = cities.map(city => `
+    <tr>
+      <td>${city.city}</td>
+      <td>${city.zipCode}</td>
+    </tr>
+    `)
+    const tableRowsStr = tableRows.join('');
+    zipTableBody.innerHTML = tableRowsStr;
+  })
+})
+
+var savebtnEdit = document.getElementById("savebtnEdit");
+savebtnEdit.addEventListener('click', (event) => {
+  event.preventDefault;
+  var id = document.getElementById("editID").value;
+  let fName = document.getElementById("fnameEdit").value;
+  let lName = document.getElementById("lnameEdit").value;
+  let pNumbers = document.getElementById("phoneNumbersEdit").value;
+  let pDescription = document.getElementById("phoneDescEdit").value;
+  let email = document.getElementById("emailEdit").value;
+  let street = document.getElementById("streetEdit").value;
+  let zipCode = document.getElementById("zipCodeEdit").value;
+  let city = document.getElementById("cityEdit").value;
+  let additionalInfo = document.getElementById("additionalEdit").value;
+  let hNames = document.getElementById("hobbyEdit").value;
+  let hDescription = document.getElementById("hobbyDescEdit").value;
+  const newUser = {
+    fName,
+    lName,
+    pNumbers,
+    pDescription,
+    email,
+    street,
+    zipCode,
+    city,
+    additionalInfo,
+    hNames,
+    hDescription
+  }
+  personFacade.editPerson(id, newUser);
+})
