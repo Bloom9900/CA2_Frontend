@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webpack/Babel-demo</title>
+</head>
+
+<body>
+  <h2>All Persons</h2>
+    <div style="min-height: 200px;">
+      <table class="table" style="width: 90%">
+        <thead>
+          <tr>
+            <td>ID</td>
+            <td>First Name</td>
+            <td>Last name</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>Street</td>
+            <td>Zip</td>
+            <td>City</td>
+            <td>Hobbies</td>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <button type="button" id="reload" class="btn btn-secondary">Reload Data</button>
+    <button type="button" id="addPerson" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+      Add New Person
+    </button>
+    <!--
+    <div id="error" class="alert alert-danger" role="alert" style="width: 50%;margin-top:10px;"></div>
+    -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div id="header" class="modal-header">
+
+          </div>
+          <div class="modal-body">
+            <input type="hidden" id="id">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" class="form-control" id="fname">
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" class="form-control" id="lname">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Numbers</label>
+              <input type="text" class="form-control" id="phoneNumbers">
+            </div>
+            <div class="form-group">
+              <label for="phoneDesc">Phone Description(Work, private)</label>
+              <input type="text" class="form-control" id="phoneDesc">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+              <label for="street">Street</label>
+              <input type="text" class="form-control" id="street">
+            </div>
+            <div class="form-group">
+              <label for="zipCode">Zip Code</label>
+              <input type="text" class="form-control" id="zipCode">
+            </div>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" class="form-control" id="city">
+            </div>
+            <div class="form-group">
+              <label for="additional">Additional Info</label>
+              <input type="text" class="form-control" id="additional">
+            </div>
+            <div class="form-group">
+              <label for="hNames">Hobby Name</label>
+              <input type="text" class="form-control" id="hobby">
+            </div>
+            <div class="form-group">
+              <label for="hobbyDesc">Hobby Description</label>
+              <input type="text" class="form-control" id="hobbyDesc">
+            </div>
+            
+
+            <!-- Allow form submission with keyboard without duplicating the dialog button -->
+            <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            <button type="button" id="savebtn" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- #################################################################-->
+  <!-- IMPORTANT  DO NOT IMPORT ANY JavaScript in this file by YOURSELF -->
+  <!-- #################################################################-->
+
+</body>
+
+</html>
