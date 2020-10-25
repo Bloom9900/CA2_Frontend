@@ -8,7 +8,10 @@
 </head>
 
 <body>
-  <h2>All Persons</h2>
+    <div class="form-inline">
+      <h2>All Persons&nbsp;-&nbsp;</h2> 
+      <button data-target="#apiModal" data-toggle="modal" class="btn btn-info">API Description</button>
+    </div>
     <div style="min-height: 200px;">
       <table class="table" style="width: 90%">
         <thead>
@@ -168,6 +171,149 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="apiModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div id="header" class="modal-header">
+            <div class="text-center form-group">
+              <h3 class="text-center">API Description</h3>
+              <p><a target="_blank" href="https://docs.google.com/document/d/1Jt5Q4G5AYmF3WEbswQ6RrH1G_LcNzqK8SIqkJehgNM4/edit?usp=sharing">Link to full API Description</a></p>
+              <!-- We didn't have the time to write the whole description in this modal... -->
+            </div>
+          </div>
+
+            <div>
+              <table class="table table-bordered">
+                <tr>
+                  <th>Method</th>
+                  <th>URL</th>
+                  <th>Request Body (JSON)</th>
+                  <th>Response (JSON)</th>
+                  <th>Error (e)</th>
+                </tr>
+                <tr>
+                  <td class="font-weight-bold">GET</td>
+                  <td>/api/person/all</td>
+                  <td></td>
+                  <td>[persons, persons, ...](1)</td>
+                  <td>(e5): “person” as object.</td>
+                </tr>
+                <tr>
+                  <td class="font-weight-bold">GET</td>
+                  <td>/api/person/{id} Id: A person ID</td>
+                  <td></td>
+                  <td>person (1)</td>
+                  <td>(e1) ”person” as property</td>
+                </tr>
+                <tr>
+                  <td class="font-weight-bold">POST</td>
+                  <td>/api/person</td>
+                  <td>person (2) without id</td>
+                  <td></td>
+                  <td>(e2), (e1): “zipCode” as property, (e4): “pNumbers” as property</td>
+                </tr>
+                <tr>
+                  <td class="font-weight-bold">GET</td>
+                  <td>/api/person/{hobby}</td>
+                  <td></td>
+                  <td>person (1)</td>
+                  <td>(e1) “hNames” as property</td>
+                </tr>
+                <tr>
+                  <td class="font-weight-bold">GET</td>
+                  <td>/api/person/{city}</td>
+                  <td></td>
+                  <td>person (1)</td>
+                  <td>(e1) “city” as property</td>
+                </tr>
+                <tr>
+                  <td class="font-weight-bold">GET</td>
+                  <td>/api/zipcodesdk</td>
+                  <td></td>
+                  <td>[cityInfo, cityInfo, ...] (2)</td>
+                  <td>(e5) “hNames” as property</td>
+                </tr>
+                <tr>
+                  <td class="font-weight-bold">PUT</td>
+                  <td>/api/person/{id}</td>
+                  <td>person (1) without id</td>
+                  <td>person (1)</td>
+                  <td>(e3), (e2): “fName” and “lName” as property.</td>
+                </tr>
+              </table>
+            </div>
+
+            <hr>
+
+            <div>
+              <div>
+                <h4 class="text-muted">Request Body and Response Formats</h4>
+              </div>
+
+              <div>
+                <div><p class="font-weight-bold">(1) Person format GET/PUT (don't provide ID, for PUT)</p></div>
+                <p>&nbsp;{</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;"id": Number,</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;"fName": String,</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;"lName": String,</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;"phoneNumbers": {</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"all": [</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pNumbers": String,</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pDescription": String</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;},</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;"email": String,</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;"street": String,</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;"city": String,</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;"zipCode": String,</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;"hobbies": {</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"all": [</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"hNames": String,</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"hDescription": String</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+                <p>&nbsp;}</p>
+              </div>
+            
+              <div>
+                <div><p class="font-weight-bold">(2) CityInfo format</p></div>
+                <p>&nbsp;{</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;"city": String,</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;"zipCode": String</p>
+                <p>&nbsp;}</p>
+              </div>
+              <div>
+                <div><p class="font-weight-bold">(3) Person format (POST)</p></div>
+                  <p>&nbsp;{</p>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;"id": Number,</p>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;"fName": String,</p>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;"lName": String,</p>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;"pNumbers": String,</p>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;"pDescription": String,</p>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;"email": String,</p>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;"street": String,</p>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;"city": String,</p>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;"zipCode": String,</p>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;"hNames": String,</p>
+                  <p>&nbsp;&nbsp;&nbsp;&nbsp;"hDescription": String</p>
+                  <p>&nbsp;}</p>
+              </div>
+            </div>
+
+            <hr>
+
+            <div>
+              <p class="font-weight-bold">We didn't have time to complete the API description here, press the link in the top of this modal for at full API description...</p>
+            </div>
+      </div>
+    </div>
     </div>
 
 <br><br>
